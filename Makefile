@@ -3,7 +3,7 @@ VERSION = 10.9.0-dev
 IMAGE_NAME ?= jellyfin-dev
 IMAGE_TAG ?= $(VERSION)
 IMAGE = $(IMAGE_NAME):$(IMAGE_TAG)
-BUILD_ARGS = --build-arg JELLYFIN_VERSION=$(VERSION) --build-arg DOTNET_ARCH=linux-x64 --build-arg PACKAGE_ARCH=amd64 --build-arg QEMU_ARCH=x86_64 --build-arg TARGET_ARCH=amd64 --build-arg IMAGE_ARCH=amd64 --build-arg OS_VERSION=bullseye
+BUILD_ARGS = --build-arg JELLYFIN_VERSION=$(VERSION) --build-arg DOTNET_VERSION=8.0-jammy --build-arg DOTNET_ARCH=linux-x64 --build-arg PACKAGE_ARCH=amd64 --build-arg QEMU_ARCH=x86_64 --build-arg TARGET_ARCH=amd64 --build-arg IMAGE_ARCH=amd64 --build-arg OS_VERSION=bullseye
 
 .PHONY: build
 build:
