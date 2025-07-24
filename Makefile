@@ -5,7 +5,7 @@ IMAGE_TAG ?= $(VERSION)
 IMAGE = $(IMAGE_NAME):$(IMAGE_TAG)
 BUILD_ARGS = --build-arg JELLYFIN_VERSION=$(VERSION) --build-arg DOTNET_VERSION=9.0 --build-arg DOTNET_ARCH=linux-x64 --build-arg PACKAGE_ARCH=amd64 --build-arg QEMU_ARCH=x86_64 --build-arg TARGET_ARCH=amd64 --build-arg IMAGE_ARCH=amd64 --build-arg OS_VERSION=bookworm
 
-@$(DOCKER) build -f docker/Dockerfile $(BUILD_ARGS) -t $(IMAGE) .
+# @$(DOCKER) build -f docker/Dockerfile $(BUILD_ARGS) -t $(IMAGE) .
 .PHONY: build
 build:
 	@./build.py auto docker amd64 --local
