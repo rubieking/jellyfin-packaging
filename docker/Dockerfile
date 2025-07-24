@@ -95,10 +95,12 @@ RUN dotnet publish Jellyfin.Server --arch ${DOTNET_ARCH} --configuration ${CONFI
 #
 # Build the final combined image
 #
+ARG OS_VERSION
+ARG QEMU_ARCH
+ARG IMAGE_ARCH
 FROM multiarch/qemu-user-static:x86_64-${QEMU_ARCH} as qemu
 FROM --platform=linux/${TARGET_ARCH} ${IMAGE_ARCH}/debian:${OS_VERSION}-slim as combined
 
-ARG OS_VERSION
 ARG FFMPEG_PACKAGE
 
 ARG GMMLIB_VER
@@ -114,7 +116,6 @@ ARG MALI_PKG_CFG
 
 ARG PACKAGE_ARCH
 ARG DOTNET_ARCH
-ARG QEMU_ARCH
 
 # Copy the QEMU runtime
 COPY --from=qemu /usr/bin/* /usr/bin
